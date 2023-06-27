@@ -1,1 +1,32 @@
-<h1> This is a test </h1> 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website 2</title>
+</head>
+<body>
+
+  <h1>Website 2</h1>
+
+  <div id="form-data"></div>
+
+  <script>
+    // Parse URL parameters to get form data
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var name = getParameterByName('name');
+    var email = getParameterByName('email');
+
+    // Display form data in div section
+    var formDataDiv = document.getElementById('form-data');
+    formDataDiv.innerHTML = '<h2>Form data:</h2><p>Name: ' + name + '</p><p>Email: ' + email + '</p>';
+  </script>
+
+</body>
+</html>
